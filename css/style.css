@@ -199,6 +199,7 @@ input::-webkit-input-placeholder{color:#b9bbbe}
 .lpmc-slc4{width:4.31rem}
 .jbxx-form .form-sec .row-wrap .main-in .lpmc-slc4 .search-wp .search-in{width:3.12rem}
 .table-import .table-itm-group{width:6.52rem}
+}
 @media only screen and (max-width: 768px) {
 body,html{width:100%;min-width:360px}
 *,:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-o-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}
