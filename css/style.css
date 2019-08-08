@@ -184,7 +184,7 @@ input::-webkit-input-placeholder{color:#b9bbbe}
 .import-tip ul li .dwn{color:#4293f4}
 .import-tip ul li .dwn:hover{font-weight:700}
 /* ====================================================响应式============================================================= */
-@media only screen and (min-width: 769px) and (max-width: 1367px){
+@media only screen and (max-width: 1367px){
 .main-m{width:1070px}
 .com-form .form-sec .row-wrap .name{width:140px}
 .com-form .form-sec .row-wrap .main-in{width:640px}
