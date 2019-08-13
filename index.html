@@ -1,43 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
 <head>
-	<meta charset="UTF-8">
-	<title>过滤器</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="apple-touch-icon" href="images/icon.png"/>
+<link rel="apple-touch-startup-image" href="images/icon.png" />
+
+<style type="text/css">
+body, div, canvas
+{
+    image-rendering: optimizeSpeed;
+    -webkit-image-rendering: optimizeSpeed;
+    -webkit-interpolation-mode: nearest-neighbor;
+}
+body{padding:0; margin:0;font-size:12px;background-color:#000;}
+body, html{height: 100%;}
+#outer{height:100%; overflow:hidden; position:relative; width:100%;}
+#outer[id]{display:table; position:static;}
+#middle{position:absolute; top:50%;} /* for ie only*/
+#middle[id]{display:table-cell; vertical-align:middle; position:static;}
+</style>
+
+<title>Fish Joy in HTML5</title>
+
+<script type="text/javascript" src="js/quark.base-1.0.0.alpha.min.js"></script>
+<!--<script type="text/javascript" src="fishjoy.game.js"></script>-->
+<script type="text/javascript" src="src/R.js"></script>
+<script type="text/javascript" src="src/Utils.js"></script>
+<script type="text/javascript" src="src/fishjoy.js"></script>
+<script type="text/javascript" src="src/FishManager.js"></script>
+<script type="text/javascript" src="src/FishGroup.js"></script>
+<script type="text/javascript" src="src/views/Fish.js"></script>
+<script type="text/javascript" src="src/views/Cannon.js"></script>
+<script type="text/javascript" src="src/views/Bullet.js"></script>
+<script type="text/javascript" src="src/views/Num.js"></script>
+<script type="text/javascript" src="src/views/Player.js"></script>
+
 </head>
+
 <body>
-	<h3>1.同时过滤文本中所有回车和空格</h3>
-	<span>过滤前:</span>
-	<textarea id="t1" rows="15" cols="50"></textarea>
-	<button id="btn1">过滤</button>
-	<textarea id="t2" rows="15" cols="50"></textarea>
-	<span>:过滤后</span>
-	<button id="btn2">清空所有文本</button>
-	<br/>
-	<hr>
-	<br/>
 
+<div id="outer">
+	<div id="middle">
+		<div id="container" style="position:relative;width:980px;height:545px;top:-50%;margin:0 auto;"></div>
+		<div id="msg"></div>
+	</div>
+</div>
+<div id="fps" style="position:absolute;top:0;left:0;color:#fff;"></div>
 
-	<script type="text/javascript">
-	window.onload = function(){
-		/*1.同时过滤文本中所有回车和‘-’*/
-		var oT1 = document.getElementById('t1');
-		var oT2 = document.getElementById('t2');
-		var oBtn1 = document.getElementById('btn1');
-		var oBtn2 = document.getElementById('btn2');
-
-		oBtn1.onclick = function(){
-			var str1 = /\n|-/g;
-			var str2 = /\n|\s/g; //这个正则就是匹配内容中是否包含空格，换行,不管前后还是中间，都能匹配到
-			oT2.value = oT1.value.replace(str2,'');
-		};
-		oBtn2.onclick = function(){
-			oT1.value = oT2.value = '';
-		}
-		/*1.同时过滤文本中所有回车和‘-’END*/
-
-
-
-	};
-	</script>
 </body>
+
 </html>
