@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤器</title>
+</head>
+<body>
+	<h3>1.同时过滤文本中所有回车和空格</h3>
+	<span>过滤前:</span>
+	<textarea id="t1" rows="15" cols="50"></textarea>
+	<button id="btn1">过滤</button>
+	<textarea id="t2" rows="15" cols="50"></textarea>
+	<span>:过滤后</span>
+	<button id="btn2">清空所有文本</button>
+	<br/>
+	<hr>
+	<br/>
+
+
+	<script type="text/javascript">
+	window.onload = function(){
+		/*1.同时过滤文本中所有回车和‘-’*/
+		var oT1 = document.getElementById('t1');
+		var oT2 = document.getElementById('t2');
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+
+		oBtn1.onclick = function(){
+			var str1 = /\n|-/g;
+			var str2 = /\n|\s/g; //这个正则就是匹配内容中是否包含空格，换行,不管前后还是中间，都能匹配到
+			oT2.value = oT1.value.replace(str2,'');
+		};
+		oBtn2.onclick = function(){
+			oT1.value = oT2.value = '';
+		}
+		/*1.同时过滤文本中所有回车和‘-’END*/
+
+
+
+	};
+	</script>
+</body>
+</html>
