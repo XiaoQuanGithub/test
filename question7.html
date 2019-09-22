@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>题目七</title>
+<meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<link rel="stylesheet" type="text/css" media="screen" href="./css/question_template.css">
+</link>
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 720px)" href="./css/question_big.css">
+</link>
+<style type="text/css">
+      #scene_bkgrd {
+        position: absolute;
+        left: -4.74305555555556%;
+        top: -141.3854166666667%;
+        width: 126.388888888889%;
+      }
+      #scene_desk {
+        position: absolute;
+        left: -12.11805555555556%;
+        top: 53.21875%;
+        width: 126.6875%;
+      }
+      #scene_pc {
+        position: absolute;
+        left: 43.22916666666667%;
+        top: 30.86458333333333%;
+        width: 76.666666666667%;
+      }
+      #scene_woman {
+        position: absolute;
+        left: 8.99305555555556%;
+        top: -1.5625%;
+        width: 52.02777777777778%;
+      }
+      #scene_word {
+        position: absolute;
+        left: 41.13194444444444%;
+        top: 52.0625%;
+        width: 29.72222222222222%;
+      }
+</style>
+</head>
+<body>
+<div id="background">
+</div>
+<div id="container" style="visibility: hidden">
+  <!-- 题目场景 -->
+  <div id="scene">
+    <img id="scene_bkgrd" src="assets/question7/scene_bkgrd.png">
+    <img id="scene_desk" src="assets/question7/scene_desk.png">
+    <img id="scene_pc" src="assets/question7/scene_pc.png">
+    <img id="scene_woman" src="assets/question7/scene_woman.png">
+    <img id="scene_word" src="assets/question7/scene_word.png">
+    <div id="quiz_progress">
+    </div>
+  </div>
+  <!-- 题目内容 -->
+  <div id="question">
+    <div id="question_title">
+      <span id="question_title_text"></span>
+    </div>
+  </div>
+  <!-- AlertView -->
+  <div id="tip_container" style="visibility: hidden">
+  </div>
+</div>
+</div>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/js_template.js"></script>
+<script type="text/javascript">
+  (function() {
+    var sceneBack;
+    var sceneDesk;
+    var scenePc;
+    var sceneWoman;
+    var sceneWord;
+    function initAnimation() {
+      $("#quiz_progress").css("opacity", "0");
+      $("#scene_word").css("opacity", "0");
+      $("#scene_word").animate({"scale" : "0"}, 1);
+      sceneBack =  $("#scene_bkgrd").offset().left;
+      $("#scene_bkgrd").css("left", sceneBack + $("#scene").width());
+      sceneDesk = parseFloat($("#scene_desk").css("left"));
+      $("#scene_desk").css("left", sceneDesk - $("#scene").width() - $("#scene_desk").width());
+      scenePc =  $("#scene_pc").offset().top;
+      $("#scene_pc").css("top", scenePc - $("#scene").height() - $("#scene_pc").height());
+      sceneWoman = parseFloat($("#scene_woman").css("left"));
+      $("#scene_woman").css("left", sceneWoman - $("#scene").width());
+    }
+    function showSceneAnimation() {
+      $("#container").css("visibility", "visible");
+      $("#scene_bkgrd").animate({ translate3d : "" + (sceneBack - $("#scene_bkgrd").offset().left) + "px," + 0 + "px," + 0 + "px"}, 500, "ease-in-out", function () {
+        $("#scene_desk").animate({ translate3d : "" + (sceneDesk - parseFloat($("#scene_desk").css("left"))) + "px," + 0 + "px," + 0 + "px", opacity : 1}, 500, "ease-in-out", function () {
+          $("#scene_pc").animate({ translate3d : "" + 0 + "px," + (scenePc - $("#scene_pc").offset().top) + "px," + 0 + "px", opacity : 1}, 500, "ease-in-out", function () {
+            $("#scene_woman").animate({ translate3d : "" + (sceneWoman - parseFloat($("#scene_woman").css("left"))) + "px," + 0 + "px," + 0 + "px", opacity : 1}, 500, "ease-in-out", function () {
+              fadeBounceIn($("#scene_word"), 300, function(){
+                showQuestion();
+              });
+            });
+          });
+        });
+      });
+    }
+    function initQuestion() {
+      var question_title = "在涉密电脑前办公，手机快没电了怎么办？";
+      var answers = [
+      {
+        "answer_title":"找数据线接上涉密电脑",
+        "answer_tip":"手机会建立数据通道，将涉密电脑的数据外发出去",
+        "answer_type":"wrong"
+      },
+      {
+        "answer_title":"另外找个电源插头来",
+        "answer_tip":"带手机进入涉密场所，会有泄密风险",
+        "answer_type":"wrong"
+      },
+      {
+        "answer_title":"把手机拿到外边充电",
+        "answer_tip":"保密要害部门应该限制带入手机",
+        "answer_type":"correct"
+      }
+      ];
+      randomAddAnswers(answers);
+      $("#question_title_text").text(question_title);
+      initTemplate();
+    }
+    function onLoadFinished(event) {
+      initAnimation();
+      showSceneAnimation();
+    }
+    function onDOMContentLoaded(event) {
+      initQuestion();
+    }
+    window.onload = onLoadFinished;
+    window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+  })();
+  </script>
+</html>

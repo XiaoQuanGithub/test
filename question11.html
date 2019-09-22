@@ -1,0 +1,116 @@
+<html>
+<head>
+<title>题目十一</title>
+<meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<link rel="stylesheet" type="text/css" media="screen" href="./css/question_template.css">
+</link>
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 720px)" href="./css/question_big.css">
+</link>
+<style type="text/css">
+      #scene_bkgrd {
+        position: absolute;
+        left: -72.36805555555556%;
+        top: -37.5%;
+        width: 182.6944444444444%;
+      }
+      #scene_man {
+        position: absolute;
+        left: 25.95833333333333%;
+        top: 2.96875%;
+        width: 31.14583333333333%;
+      }
+      #scene_cloud {
+        position: absolute;
+        left: 55.52777777777778%;
+        top: 10.26041666666667%;
+        width: 29.83333333333333%;
+      }
+      }
+</style>
+</head>
+<body>
+<div id="background">
+</div>
+<div id="container" style="visibility: hidden">
+  <!-- 题目场景 -->
+  <div id="scene">
+    <img id="scene_bkgrd" src="assets/question11/scene_bkgrd.png">
+    <img id="scene_man" src="assets/question11/scene_man.png">
+    <img id="scene_cloud" src="assets/question11/scene_cloud.png">
+    <div id="quiz_progress">
+    </div>
+  </div>
+  <!-- 题目内容 -->
+  <div id="question">
+    <div id="question_title">
+      <span id="question_title_text"></span>
+    </div>
+  </div>
+  <!-- AlertView -->
+  <div id="tip_container" style="visibility: hidden">
+  </div>
+</div>
+</div>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/js_template.js"></script>
+<script type="text/javascript">
+  (function() {
+    var sceneBack;
+    var sceneMan;
+    var sceneCloud;
+    function initAnimation() {
+      $("#quiz_progress").css("opacity", "0");
+      $("#scene_cloud").css("opacity", "0");
+      $("#scene_cloud").animate({"scale" : "0"}, 1);
+      sceneBack =  $("#scene_bkgrd").offset().top;
+      $("#scene_bkgrd").css("top", sceneBack + $("#scene").height());
+      sceneMan = $("#scene_man").offset().top;
+      $("#scene_man").css("top", sceneMan + $("#scene").height());
+    }
+    function showSceneAnimation() {
+      $("#container").css("visibility", "visible");
+      $("#scene_bkgrd").animate({ translate3d : "" + 0 + "px," + (sceneBack - $("#scene_bkgrd").offset().top) + "px," + 0 + "px"}, 500, "ease-in-out", function () {
+        $("#scene_man").animate({ translate3d : "" + 0 + "px," + (sceneMan - $("#scene_man").offset().top) + "px," + 0 + "px"}, 500, "ease-in-out", function () {
+          fadeBounceIn($("#scene_cloud"), 300, function(){
+            showQuestion();
+          });
+        });
+      });
+    }
+    function initQuestion() {
+      var question_title = "手机不见了怎么办？";
+      var answers = [
+      {
+        "answer_title":"当没事重新买一部",
+        "answer_tip":"可能给你和身边的人带来麻烦，应该做一些补救措施",
+        "answer_type":"wrong"
+      },
+      {
+        "answer_title":"使用“远程抹掉手机”功能",
+        "answer_tip":"断网后不一定有效",
+        "answer_type":"correct"
+      },
+      {
+        "answer_title":"申请号码停机，并通知亲友",
+        "answer_tip":"最好减少在手机上存储敏感信息，定时清理数据",
+        "answer_type":"correct"
+      }
+      ];
+      randomAddAnswers(answers);
+      $("#question_title_text").text(question_title);
+      initTemplate();
+    }
+    function onLoadFinished(event) {
+      initAnimation();
+      showSceneAnimation();
+    }
+    function onDOMContentLoaded(event) {
+      initQuestion();
+    }
+    window.onload = onLoadFinished;
+    window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+  })();
+  </script>
+</html>

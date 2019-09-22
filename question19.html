@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>题目十九</title>
+<meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<link rel="stylesheet" type="text/css" media="screen" href="./css/question_template.css">
+</link>
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 720px)" href="./css/question_big.css">
+</link>
+<style type="text/css">
+      #scene_left {
+        position: absolute;
+        left: 2.638888888889%;
+        top: 4.15625%;
+        width: 47.361111111111%;
+      }
+      #scene_right1 {
+        position: absolute;
+        left: 48.820833333333%;
+        top: 4.15625%;
+        width: 48.333333333333%;
+      }
+      #scene_right2 {
+        position: absolute;
+        left: 48.820833333333%;
+        top: 4.15625%;
+        width: 48.333333333333%;
+      }
+      #scene_mimi {
+        position: absolute;
+        left: 51.826388888889%;
+        top: 39.472340425532%;
+        width: 20.409722222222%;
+      }
+      #scene_woman {
+        position: absolute;
+        left: 48.944444444444%;
+        top: 17.5%;
+        width: 65.972222222222%;
+      }
+</style>
+</head>
+<body>
+<div id="background">
+</div>
+<div id="container" style="visibility: hidden">
+  <!-- 题目场景 -->
+  <div id="scene">
+    <img id="scene_left" src="assets/question19/scene_left.png">
+    <img id="scene_right1" src="assets/question19/scene_right1.png">
+    <img id="scene_mimi" src="assets/question19/scene_mimi.png">
+    <img id="scene_right2" src="assets/question19/scene_right2.png">
+    <div id="quiz_progress">
+    </div>
+  </div>
+  <!-- 题目内容 -->
+  <div id="question">
+    <div id="question_title">
+      <span id="question_title_text"></span>
+    </div>
+  </div>
+  <!-- AlertView -->
+  <div id="tip_container" style="visibility: hidden">
+  </div>
+</div>
+</div>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/js_template.js"></script>
+<script type="text/javascript">
+  (function() {
+    var sceneLeftLeft;
+    var sceneRightLeft;
+    var sceneMiniLeft;
+    var sceneMiniTop;
+    function getLeftOf(element) {
+      // fix手机上和pc上移动位置不对的问题
+      if ($("body").offset().width > 720) {
+        return parseFloat(element.css("left"));
+      }
+      else {
+        return element.offset().left;
+      }
+    }
+    function initAnimation() {
+      $("#quiz_progress").css("opacity", "0");
+      sceneLeftLeft =  $("#scene_left").offset().left;
+      $("#scene_left").css("left", sceneLeftLeft + $("#scene").width());
+      sceneRightLeft = $("#scene_right1").offset().left;
+      $("#scene_right1").css("left", sceneRightLeft + $("#scene").width());
+      $("#scene_right2").css("left", sceneRightLeft + $("#scene").width());
+      sceneMiniLeft = getLeftOf($("#scene_mimi"));
+      sceneMiniTop = $("#scene_mimi").offset().top;
+      $("#scene_mimi").css({
+        "left" : sceneMiniLeft + $("#scene_mimi").offset().width*0.1,
+        "top" : sceneMiniTop + $("#scene_mimi").height() * 0.5,
+        "visibility" : "hidden"
+      });
+    }
+    function showSceneAnimation() {
+      $("#container").css("visibility", "visible");
+      $("#scene_left").animate({ translate3d : "" + (sceneLeftLeft - $("#scene_left").offset().left) + "px," + 0 + "px," + 0 + "px"}, 500, "ease-in-out", function () {
+        $("#scene_right1").animate({ translate3d : "" + (sceneRightLeft - $("#scene_right1").offset().left) + "px," + 0 + "px," + 0 + "px"}, 500, "ease-in-out");
+        $("#scene_right2").animate({ translate3d : "" + (sceneRightLeft - $("#scene_right2").offset().left) + "px," + 0 + "px," + 0 + "px"}, 500, "ease-in-out", function () {
+          $("#scene_mimi").css("visibility", "visible");
+          $("#scene_mimi").animate({ translate3d : "" + (sceneMiniLeft - getLeftOf($("#scene_mimi"))) + "px," + (sceneMiniTop - $("#scene_mimi").offset().top)  + "px," + 0 + "px"}, 500, "ease-in-out", function () {
+            showQuestion();
+          });
+        });
+      });
+    }
+    function initQuestion() {
+      var question_title = "路上发现文件袋里有国家秘密文件如何处理？";
+      var answers = [
+      {
+        "answer_title":"发到朋友圈炫耀一下",
+        "answer_tip":"这样会\"一发不可收拾\"，在私人交往和通信中涉及国家秘密也属于违法行为",
+        "answer_type":"wrong"
+      },
+      {
+        "answer_title":"带回家认真看看",
+        "answer_tip":"非法获取、持有国家秘密载体属于违法行为",
+        "answer_type":"wrong"
+      },
+      {
+        "answer_title":"交给公安机关或保密行政管理部门",
+        "answer_tip":"保守国家秘密是每位公民的义务",
+        "answer_type":"correct"
+      }
+      ];
+      randomAddAnswers(answers);
+      $("#question_title_text").text(question_title);
+      initTemplate();
+    }
+    function onLoadFinished(event) {
+      initAnimation();
+      showSceneAnimation();
+    }
+    function onDOMContentLoaded(event) {
+      initQuestion();
+    }
+    window.onload = onLoadFinished;
+    window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+  })();
+  </script>
+</html>

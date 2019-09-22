@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>安全保密知识问答</title>
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<style type="text/css">
+  @media screen
+  {
+    frame {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+  }
+  @media screen and (min-width: 720px)
+  {
+    frame {
+      width: 480px;
+      height: 100%;
+      margin: 0;
+    }
+  }
+</style>
+</head>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/js_template.js"></script>
+<script type="text/javascript" src="js/part_start.js"></script>
+<script type="text/javascript">
+function onMainLoad()
+{
+  initQuestion(new Array("4", "5", "6", "17", "21"));
+  initFrameSrc(4);
+  handleNextQuestion(onNextQuestion);
+  handleQuestionStart(onQuestionStart);
+}
+window.onload = onMainLoad;
+</script>
+<frameset cols="100%">
+  <frame id="contentFrame" name="content" src="">
+</frameset>
+</html>
