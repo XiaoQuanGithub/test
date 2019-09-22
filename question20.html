@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>题目二十</title>
+<meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<link rel="stylesheet" type="text/css" media="screen" href="./css/question_template.css">
+</link>
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 720px)" href="./css/question_big.css">
+</link>
+<style type="text/css">
+      #scene_bkgrd {
+        position: absolute;
+        left: -12.47916666666667%;
+        top: -7.19791666666667%;
+        width: 117.9305555555556%;
+      }
+      #scene_pc_desk {
+        position: absolute;
+        left: -6.11111111111111%;
+        top: 6.16666666666667%;
+        width: 114.0486111111111%;
+      }
+      #scene_woman {
+        position: absolute;
+        left: -00.27777777777778%;
+        top: 52.60416666666667%;
+        width: 80.42361111111111%;
+      }
+      #scene_word {
+        position: absolute;
+        left: 22.63888888888889%;
+        top: 17.52083333333333%;
+        width: 44.68055555555556%;
+      }
+</style>
+</head>
+<body>
+<div id="background">
+</div>
+<div id="container" style="visibility: hidden">
+  <!-- 题目场景 -->
+  <div id="scene">
+    <img id="scene_bkgrd" src="assets/question20/scene_bkgrd.png">
+    <img id="scene_pc_desk" src="assets/question20/scene_pc_desk.png">
+    <img id="scene_woman" src="assets/question20/scene_woman.png">
+    <img id="scene_word" src="assets/question20/scene_word.png">
+    <div id="quiz_progress">
+    </div>
+  </div>
+  <!-- 题目内容 -->
+  <div id="question">
+    <div id="question_title">
+      <span id="question_title_text"></span>
+    </div>
+  </div>
+  <!-- AlertView -->
+  <div id="tip_container" style="visibility: hidden">
+  </div>
+</div>
+</div>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/js_template.js"></script>
+<script type="text/javascript">
+  (function() {
+    var sceneCopyTop;
+    var sceneWomanTop;
+    function initAnimation() {
+      $("#quiz_progress").css("opacity", "0");
+      $("#scene_word").css("opacity", "0");
+      $("#scene_word").animate({"scale" : "0"}, 1);
+      sceneCopyTop = $("#scene_pc_desk").offset().top;
+      $("#scene_pc_desk").css("top", sceneCopyTop + $("#scene").height());
+      sceneWomanTop =  $("#scene_woman").offset().top;
+      $("#scene_woman").css("top", sceneWomanTop + $("#scene").height());
+    }
+    function showSceneAnimation() {
+      $("#container").css("visibility", "visible");
+      $("#scene_pc_desk").animate({ translate3d : "" + 0 + "px," + (sceneCopyTop - $("#scene_pc_desk").offset().top) + "px," + 0 + "px", opacity : 1}, 500, "ease-in-out", function () {
+        $("#scene_woman").animate({ translate3d : "" + 0 + "px," + (sceneWomanTop - $("#scene_woman").offset().top) + "px," + 0 + "px"}, 500, "ease-in-out", function() {
+          fadeBounceIn($("#scene_word"), 300, function(){
+            showQuestion();
+          });
+        });
+      });
+    }
+    function initQuestion() {
+      var question_title = "用户注册，初始账号该如何设置密码？";
+      var answers = [
+      {
+        "answer_title":"用生日日期吧",
+        "answer_tip":"密码口令过于简单，形同虚设",
+        "answer_type":"wrong"
+      },
+      {
+        "answer_title":"跟其他账号密码设成一样，好记",
+        "answer_tip":"把所有账号密码设成一样的，存在严重安全风险",
+        "answer_type":"wrong"
+      },
+      {
+        "answer_title":"使用复杂的带有大小写字母、数字、符号组合口令",
+        "answer_tip":"可以用个人暗语转换成密码口令更容易记忆，重要账号的密码要定期更换",
+        "answer_type":"correct"
+      }
+      ];
+      randomAddAnswers(answers);
+      $("#question_title_text").text(question_title);
+      initTemplate();
+    }
+    function onLoadFinished(event) {
+      initAnimation();
+      showSceneAnimation();
+    }
+    function onDOMContentLoaded(event) {
+      initQuestion();
+    }
+    window.onload = onLoadFinished;
+    window.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+  })();
+  </script>
+</html>
