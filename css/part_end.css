@@ -1,0 +1,26 @@
+@charset "utf-8";
+body{margin:0;width:100%;height:100%}
+#container{position:absolute;top:0;right:0;bottom:0;left:0;overflow:hidden;margin-right:auto;margin-left:auto;width:100%;height:auto;background-color:#3fb057}
+#content{position:absolute;top:0;right:0;bottom:0;left:0;overflow:hidden;margin-right:auto;margin-left:auto;width:100%;height:auto;background-color:#3fb057}
+#cloud{position:absolute;top:.375em;right:0;left:0;margin-right:auto;margin-left:auto;width:92.77777777778%}
+#bottom{position:absolute;right:0;bottom:0;left:0;margin-right:auto;margin-bottom:0;margin-left:auto;width:100%}
+#pass{position:absolute;right:0;left:0;margin-top:4em;margin-right:auto;margin-left:auto;width:80.833333333333%}
+#congratuations_container{position:absolute;top:0;right:0;bottom:0;left:0;margin-right:auto;margin-left:auto;width:100%;height:auto}
+#congratuations{position:absolute;position:absolute;right:0;left:0;margin-top:5em;margin-right:auto;margin-left:auto;width:56.833333333333%}
+#share_button{position:absolute;top:0;right:0;bottom:0;left:0;margin-top:auto;margin-right:auto;margin-bottom:auto;margin-left:auto;width:75%}
+#jiathis_share{visibility:hidden}
+#share_intro_container{position:absolute;top:0;width:100%;height:100%;background-color:rgba(0,0,0,.78)}
+#share_intro_img{position:absolute;top:0;right:0;left:0;margin-right:0;margin-left:auto;width:76.666666666667%}
+#other_part{position:absolute;position:absolute;bottom:0;margin-top:auto;margin-bottom:0;width:100%;height:40%;text-align:center}
+#other_part_title{top:22.5em;margin-bottom:.27777777777778em;color:#fff}
+#other_part_seperator{right:0;left:0;margin-right:auto;margin-left:auto;width:41.25%}
+#other_part_seperator_img{position:absolute;width:41.25%}
+.other_part_container{position:absolute;margin-top:1.19444444444444em;width:4.11111111111111em;height:5.5em;color:#fff;text-align:center}
+.other_part_button{position:absolute;left:0;width:4.11111111111111em}
+.part1_cover{position:absolute;left:0;width:4.11111111111111em}
+.part_title{position:absolute;right:0;bottom:0;left:0;margin-right:auto;margin-left:auto}
+.part_check{position:absolute;left:0;width:4.11111111111111em}
+#part1{left:3.888888888889%}
+#part2{left:28.055555555556%}
+#part3{left:51.805555555556%}
+#part4{left:75.833333333333%}

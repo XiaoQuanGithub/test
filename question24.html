@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>题目二十四</title>
+    <meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/question_template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:720px)" href="./css/question_big.css">
+    <style type="text/css">
+        #scene_bkgrd {
+            position: absolute;
+            left: -13.04861111111111%;
+            top: -11.63541666666667%;
+            width: 137.5694444444444%
+        }
+        #scene_desk {
+            position: absolute;
+            left: -5.06944444444444%;
+            top: 77.66666666666667%;
+            width: 116.4166666666667%
+        }
+        #scene_people {
+            position: absolute;
+            left: 14.36805555555556%;
+            top: 13.64583333333333%;
+            width: 80.02083333333333%
+        }
+        #scene_dialog {
+            position: absolute;
+            left: 42.375%;
+            top: 16.02083333333333%;
+            width: 23.8125%
+        }
+    </style>
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container" style="visibility:hidden">
+        <div id="scene"><img id="scene_bkgrd" src="assets/question24/scene_bkgrd.png"> <img id="scene_people" src="assets/question24/scene_people.png"> <img id="scene_desk" src="assets/question24/scene_desk.png"> <img id="scene_dialog" src="assets/question24/scene_dialog.png">
+            <div id="quiz_progress"></div>
+        </div>
+        <div id="question">
+            <div id="question_title"><span id="question_title_text"></span></div>
+        </div>
+        <div id="tip_container" style="visibility:hidden"></div>
+    </div>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/js_template.js"></script>
+    <script type="text/javascript">
+        ! function() {
+            var t, n, s;
+            window.onload = function(e) {
+                $("#quiz_progress").css("opacity", "0"), $("#scene_dialog").css("opacity", "0"), $("#scene_dialog").animate({
+                    scale: "0"
+                }, 1), t = $("#scene_bkgrd").offset().top, $("#scene_bkgrd").css("top", t - $("#scene").height()), n = $("#scene_desk").offset().top, $("#scene_desk").css("top", n + $("#scene").height()), s = $("#scene_people").offset().top, $("#scene_people").css("top", s + $("#scene").height()), $("#container").css("visibility", "visible"), $("#scene_bkgrd").animate({
+                    translate3d: "0px," + (t - $("#scene_bkgrd").offset().top) + "px,0px"
+                }, 500, "ease-in-out", function() {
+                    $("#scene_desk").animate({
+                        translate3d: "0px," + (n - $("#scene_desk").offset().top) + "px,0px",
+                        opacity: 1
+                    }, 500, "ease-in-out", function() {
+                        $("#scene_people").animate({
+                            translate3d: "0px," + (s - $("#scene_people").offset().top) + "px,0px",
+                            opacity: 1
+                        }, 500, "ease-in-out", function() {
+                            fadeBounceIn($("#scene_dialog"), 300, function() {
+                                showQuestion()
+                            })
+                        })
+                    })
+                })
+            }, window.addEventListener("DOMContentLoaded", function(e) {
+                randomAddAnswers([{
+                    answer_title: "给老婆说没问题的",
+                    answer_tip: "公私分明，别弄出其他乱子",
+                    answer_type: "wrong"
+                }, {
+                    answer_title: "轻描淡写说一下",
+                    answer_tip: "公私分明，别弄出其他乱子",
+                    answer_type: "wrong"
+                }, {
+                    answer_title: "岔开话题说点别的吧",
+                    answer_tip: "该保密的要保密",
+                    answer_type: "correct"
+                }]), $("#question_title_text").text("可否透露早上的内部会议讲了些什么？"), initTemplate()
+            })
+        }()
+    </script>
+</body>
+</html>

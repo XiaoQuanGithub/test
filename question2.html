@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>题目二</title>
+    <meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/question_template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:720px)" href="./css/question_big.css">
+    <style type="text/css">
+        #scene_left {
+            position: absolute;
+            left: 2.638888888889%;
+            top: 4.15625%;
+            width: 52.638888888889%
+        }
+        #scene_right {
+            position: absolute;
+            left: 48.820833333333%;
+            top: 4.15625%;
+            width: 48.333333333333%
+        }
+    </style>
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container" style="visibility:hidden">
+        <div id="scene"><img id="scene_left" src="assets/question2/scene_left.png"> <img id="scene_right" src="assets/question2/scene_right.png">
+            <div id="quiz_progress"></div>
+        </div>
+        <div id="question">
+            <div id="question_title"><span id="question_title_text"></span></div>
+        </div>
+        <div id="tip_container" style="visibility:hidden"></div>
+    </div>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/js_template.js"></script>
+    <script type="text/javascript">
+        ! function() {
+            var t, n;
+            window.onload = function(e) {
+                $("#quiz_progress").css("opacity", "0"), t = $("#scene_left").offset().left, $("#scene_left").css("left", t + $("#scene").width()), n = $("#scene_right").offset().left, $("#scene_right").css("left", n + $("#scene").width()), $("#container").css("visibility", "visible"), $("#scene_left").animate({
+                    translate3d: t - $("#scene_left").offset().left + "px,0px,0px"
+                }, 500, "ease-in-out", function() {
+                    $("#scene_right").animate({
+                        translate3d: n - $("#scene_right").offset().left + "px,0px,0px"
+                    }, 500, "ease-in-out", function() {
+                        showQuestion()
+                    })
+                })
+            }, window.addEventListener("DOMContentLoaded", function(e) {
+                randomAddAnswers([{
+                    answer_title: "连接这个免费WiFi收发邮件",
+                    answer_tip: "一般的WiFi网络是不可信的，不法分子可以监控网络通信，直接盗取邮箱账号、密码等信息",
+                    answer_type: "wrong"
+                }, {
+                    answer_title: "使用手机移动数据收发邮件",
+                    answer_tip: "文件太大了，回办公室再收吧",
+                    answer_type: "correct"
+                }, {
+                    answer_title: "回办公室再收",
+                    answer_tip: "办公网络可靠些。国家秘密信息严禁在互联网等公共网络处理传输",
+                    answer_type: "correct"
+                }]), $("#question_title_text").text("该如何收发重要邮件？"), initTemplate()
+            })
+        }()
+    </script>
+</body>
+</html>

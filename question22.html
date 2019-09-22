@@ -1,0 +1,88 @@
+<head>
+    <title>题目二十二</title>
+    <meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/question_template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:720px)" href="./css/question_big.css">
+    <style type="text/css">
+        #scene_bkgrd {
+            position: absolute;
+            left: -75.22222222222222%;
+            top: -68.05208333333333%;
+            width: 179.1111111111111%
+        }
+        #scene_leader {
+            position: absolute;
+            left: 24.10416666666667%;
+            top: 1.09375%;
+            width: 51.5%
+        }
+        #scene_women {
+            position: absolute;
+            left: -6.73611111111111%;
+            top: 18.30208333333333%;
+            width: 39.22916666666667%
+        }
+        #scene_word {
+            position: absolute;
+            left: 72.36805555555556%;
+            top: 14.67708333333333%;
+            width: 26.83333333333333%
+        }
+    </style>
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container" style="visibility:hidden">
+        <div id="scene"><img id="scene_bkgrd" src="assets/question22/scene_bkgrd.png"> <img id="scene_leader" src="assets/question22/scene_leader.png"> <img id="scene_women" src="assets/question22/scene_women.png"> <img id="scene_word" src="assets/question22/scene_word.png">
+            <div id="quiz_progress"></div>
+        </div>
+        <div id="question">
+            <div id="question_title"><span id="question_title_text"></span></div>
+        </div>
+        <div id="tip_container" style="visibility:hidden"></div>
+    </div>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/js_template.js"></script>
+    <script type="text/javascript">
+        ! function() {
+            var n, t, s;
+            window.onload = function(e) {
+                $("#quiz_progress").css("opacity", "0"), $("#scene_word").css("opacity", "0"), $("#scene_word").animate({
+                    scale: "0"
+                }, 1), n = $("#scene_bkgrd").offset().top, $("#scene_bkgrd").css("top", n + 1.6 * $("#scene").height()), t = $("#scene_leader").offset().left, $("#scene_leader").css("left", t + $("#scene").width()), s = parseFloat($("#scene_women").css("left")), $("#scene_women").css("left", s - $("#scene").width()), $("#container").css("visibility", "visible"), $("#scene_bkgrd").animate({
+                    translate3d: "0px," + (n - $("#scene_bkgrd").offset().top) + "px,0px"
+                }, 500, "ease-in-out", function() {
+                    $("#scene_women").animate({
+                        translate3d: s - parseFloat($("#scene_women").css("left")) + "px,0px,0px",
+                        opacity: 1
+                    }, 500, "ease-in-out", function() {
+                        $("#scene_leader").animate({
+                            translate3d: t - $("#scene_leader").offset().left + "px,0px,0px",
+                            opacity: 1
+                        }, 500, "ease-in-out", function() {
+                            fadeBounceIn($("#scene_word"), 300, function() {
+                                showQuestion()
+                            })
+                        })
+                    })
+                })
+            }, window.addEventListener("DOMContentLoaded", function(e) {
+                randomAddAnswers([{
+                    answer_title: "找个位置，给他们一些电脑用",
+                    answer_tip: "这样就可以了吗？要做点安全保密措施哦",
+                    answer_type: "wrong"
+                }, {
+                    answer_title: "给资料他看看",
+                    answer_tip: "要注意敏感资料的管控",
+                    answer_type: "wrong"
+                }, {
+                    answer_title: "签订保密承诺书，限制办公网使用权限",
+                    answer_tip: "管理和技术双管齐下安全保密才有保障",
+                    answer_type: "correct"
+                }]), $("#question_title_text").text("单位来了实习生，如何安排？"), initTemplate()
+            })
+        }()
+    </script>
+</body>

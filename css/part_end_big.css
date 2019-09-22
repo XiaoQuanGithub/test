@@ -1,0 +1,13 @@
+@charset "utf-8";
+body{margin:0;width:100%;height:100%;text-align:center}
+#container{position:absolute;top:0;right:0;bottom:0;left:0;margin-right:auto;margin-left:auto;width:480px;height:auto;background-color:#3fb057}
+#content{position:absolute;top:0;right:0;bottom:0;left:0;overflow:hidden;margin-right:auto;margin-left:auto;width:100%;height:auto;background-color:#3fb057}
+#congratuations_container{position:absolute;top:0;right:0;bottom:0;left:0;margin-right:auto;margin-left:auto;width:480;height:auto}
+#share_button{visibility:hidden}
+#jiathis_share{position:absolute;top:0;right:0;bottom:0;left:0;visibility:visible;margin:0 auto;margin-top:auto;margin-bottom:auto;padding-right:20%;padding-left:28%;width:75%;height:32px;text-align:center}
+#jiathis_share_text{position:absolute;left:12%;margin-top:1.3%;color:#fff}
+#other_part_buttons{height:5.5em}
+#part1{left:9%}
+#part2{left:31.75%}
+#part3{left:54.5%}
+#part4{left:77.25%}
