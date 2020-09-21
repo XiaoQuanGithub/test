@@ -1,5 +1,0 @@
-@charset "utf-8";
-body{margin:0;width:100%;height:100%;background-color:#3fae59}
-#container{position:absolute;top:0;right:0;bottom:0;left:0;margin-right:auto;margin-left:auto;padding:.44444444444444em;width:480px;height:auto}
-#background{position:absolute;top:0;right:0;bottom:0;left:0;margin-right:auto;margin-left:auto;padding:.44444444444444em;height:auto;background-image:url(../assets/common/part_start_bkg.png);background-repeat:true}
-.progress_dot{margin-top:13%;margin-right:2.7%;margin-bottom:25%;margin-left:2.7%;width:12.121212121212%}
